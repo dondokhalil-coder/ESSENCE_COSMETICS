@@ -21,11 +21,18 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Structure Flexbox pour fixer le footer en bas */
+    html, body {
+      height: 100%;
+    }
+
     body {
       background-color: var(--bg-dark);
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -54,6 +61,8 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
+      flex: 1; /* Permet au contenu principal d'occuper tout l'espace disponible */
+      width: 100%;
     }
 
     .section-title {
@@ -165,13 +174,15 @@
       cursor: not-allowed;
     }
 
+    /* Footer collé en bas grâce à margin-top: auto */
     footer {
       background-color: #050505;
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
+      padding: 30px 20px;
+      margin-top: auto;
       border-top: 1px solid #222;
       color: var(--text-muted);
+      width: 100%;
     }
 
     .contact-links {
@@ -200,11 +211,8 @@
       padding: 40px 0;
     }
 
-    /* ==========================================================
-       MEDIA QUERIES - RESPONSIVE DESIGN FOR ALL SCREENS
-       ========================================================== */
+    /* MEDIA QUERIES RESPONSIVE */
 
-    /* Écrans moyens / Tablettes (768px et moins) */
     @media screen and (max-width: 768px) {
       header {
         padding: 40px 15px;
@@ -243,7 +251,6 @@
       }
     }
 
-    /* Petits écrans / Smartphones (480px et moins) */
     @media screen and (max-width: 480px) {
       header {
         padding: 30px 10px;
@@ -285,7 +292,7 @@
       }
 
       footer {
-        padding: 30px 15px;
+        padding: 25px 15px;
         font-size: 0.9rem;
       }
     }
