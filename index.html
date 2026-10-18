@@ -199,9 +199,99 @@
       font-size: 1.1rem;
       padding: 40px 0;
     }
+
+    /* ==========================================================
+       MEDIA QUERIES - RESPONSIVE DESIGN FOR ALL SCREENS
+       ========================================================== */
+
+    /* Écrans moyens / Tablettes (768px et moins) */
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 40px 15px;
+      }
+
+      .brand-name {
+        font-size: 2.3rem;
+        letter-spacing: 3px;
+      }
+
+      .brand-tagline {
+        font-size: 1rem;
+      }
+
+      .container {
+        margin: 25px auto;
+        padding: 0 15px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .product-img {
+        height: 200px;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* Petits écrans / Smartphones (480px et moins) */
+    @media screen and (max-width: 480px) {
+      header {
+        padding: 30px 10px;
+      }
+
+      .brand-name {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+
+      .brand-tagline {
+        font-size: 0.85rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .product-img {
+        height: 220px;
+      }
+
+      .product-info {
+        padding: 15px;
+      }
+
+      .product-title {
+        font-size: 1.15rem;
+      }
+
+      .product-price {
+        font-size: 1.25rem;
+      }
+
+      .btn-buy {
+        padding: 10px;
+        font-size: 0.95rem;
+      }
+
+      footer {
+        padding: 30px 15px;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 
-  <!-- Script Firebase Compatibles Navigateur -->
+  <!-- Script Firebase Compat -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 </head>
@@ -230,7 +320,7 @@
 
   <script>
     const WHATSAPP_PHONE = "243978927811";
-    // Vos clés d'accès réelles Firebase
+
     const firebaseConfig = {
       apiKey: "AIzaSyAxxlim7Vp1g3_hHCIe6OghHgWsStdMoQ8",
       authDomain: "essence-cosmetics-81fa4.firebaseapp.com",
@@ -242,11 +332,9 @@
       measurementId: "G-31KCHEG4D5"
     };
 
-    // Initialisation
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Récupération des données en temps réel
     db.ref('products').on('value', (snapshot) => {
       const container = document.getElementById('products-container');
       const data = snapshot.val();
